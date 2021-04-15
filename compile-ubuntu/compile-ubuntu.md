@@ -9,7 +9,6 @@
     + [基础性依赖](#基础性依赖)
     + [ubuntu中的依赖](#ubuntu中的依赖)
     + [编译源码](#编译源码-1)
-  - [配置源码](#配置源码)
 
 <!-- vim-markdown-toc -->
 
@@ -88,6 +87,9 @@ $ sudo apt install -y libxkbcommon-dev
 $ sudo apt install -y libxkbcommon-x11-dev
 $ sudo apt install -y libxcb-sync-dev
 
+# 整合在一起方便安装
+$ sudo apt install -y libfontconfig1-dev libfreetype6-dev libx11-dev libx11-xcb-dev libxext-dev libxfixes-dev libxi-dev libxrender-dev libxcb1-dev libxcb-glx0-dev libxcb-keysyms1-dev libxcb-image0-dev libxcb-shm0-dev libxcb-icccm4-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-randr0-dev libxcb-render-util0-dev libxkbcommon-dev libxkbcommon-x11-dev libxcb-sync-dev
+
 # 没有找到的依赖库
 $ sudo apt install -y libxcd-xinerama-dev
 $ sudo apt install -y libxcb-sync0-dev # 使用libxcb-sync-dev替代
@@ -149,6 +151,9 @@ $ sudo apt install -y gstreamer1.0-gl
 $ sudo apt install -y gstreamer1.0-gtk3
 $ sudo apt install -y gstreamer1.0-qt5
 $ sudo apt install -y gstreamer1.0-pulseaudio
+
+# 整合在一起方便安装
+$ sudo apt install -y libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 ```
 
 URL: [gstreamer](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c)
@@ -178,6 +183,10 @@ $ sudo apt install -y libxss-dev
 $ sudo apt install -y libxtst-dev
 
 $ sudo apt install -y libcap-dev
+
+# 整合在一起方便安装
+$ sudo apt install -y libdbus-1-dev libfontconfig1-dev libdrm-dev libxcomposite-dev libxcursor-dev libxi-dev libxrandr-dev libxss-dev libxtst-dev libcap-dev
+
 ```
 
 URL: [Qt WebEngine](https://doc.qt.io/qt-5/qtwebengine-platform-notes.html#linux)
@@ -253,23 +262,29 @@ $ sudo apt install -y build-essential libgl1-mesa-dev
     * 安装第三方库
 
     ```shell
-   $ sudo apt install -y zlib1g-dev
-   $ sudo apt install -y libjpeg-dev
-   $ sudo apt install -y libpng-dev
-   $ sudo apt install -y libfreetype-dev
-   $ sudo apt install -y libpcre3-dev
-   $ sudo apt install -y libharfbuzz-dev
+    $ sudo apt install -y zlib1g-dev
+    $ sudo apt install -y libjpeg-dev
+    $ sudo apt install -y libpng-dev
+    $ sudo apt install -y libfreetype-dev
+    $ sudo apt install -y libpcre3-dev
+    $ sudo apt install -y libharfbuzz-dev
+
+    # 整合在一起方便安装
+    $ sudo apt install -y zlib1g-dev libjpeg-dev libpng-dev libfreetype-dev libpcre3-dev libharfbuzz-dev
     ```
 
     * 安装工具类库
 
     ```shell
-   $ sudo apt install -y libwayland-dev
-   $ sudo apt install -y gperf
-   $ sudo apt install -y bison
-   $ sudo apt install -y flex
-   $ sudo apt install -y libudev-dev
-   $ sudo apt install -y libdouble-conversion-dev
+    $ sudo apt install -y libwayland-dev
+    $ sudo apt install -y gperf
+    $ sudo apt install -y bison
+    $ sudo apt install -y flex
+    $ sudo apt install -y libudev-dev
+    $ sudo apt install -y libdouble-conversion-dev
+
+    # 整合在一起方便安装
+    $ sudo apt install -y libwayland-dev gperf bison flex libudev-dev libdouble-conversion-dev
     ```
 
     * 无裁剪编译
@@ -278,7 +293,4 @@ $ sudo apt install -y build-essential libgl1-mesa-dev
     ./configure -release -prefix $INSTALL_PREFIX -opensource -confirm-license -nomake tests -system-zlib -system-libjpeg -system-libpng -system-freetype -system-pcre -system-harfbuzz
     make
     ```
-
-### 配置源码
-
 
