@@ -1,8 +1,22 @@
 # 目录
 
+-------
 * [Introduction](README.md)
-* [ubuntu-qt版本](compile-ubuntu/README.md)
-    * [编译ubuntu-qt版本](compile-ubuntu/compile-ubuntu.md)
-    * [helloworld](compile-ubuntu/helloworld.md)
-* [交叉编译版本](cross_compile-ubuntu/README.md)
-    * [交叉编译版本](cross_compile-ubuntu/cross_compile-ubuntu.md)
+
+-------
+* [下载`qt`源码](qt/README.md)
+    * [源码下载](qt/download-src.md)
+
+-------
+* [编译`ubuntu`版本](ubuntu/README.md)
+    * [编译`4.8.7`版本](ubuntu/4.8.7/compile-4.8.7.md)
+    * [编译`5.12.10`版本](ubuntu/5.12.10/compile-5.12.10.md)
+
+-------
+* [交叉编译海思平台](hisi/README.md)
+    * [编译`4.8.7`版本](hisi/4.8.7/compile-4.8.7.md)
+    * [编译`5.12.10`版本](hisi/5.12.10/compile-5.12.10.md)
+
+-------
+* [`helloworld`](helloworld/README.md)
+    * [`helloworld`源码](helloworld/helloworld)

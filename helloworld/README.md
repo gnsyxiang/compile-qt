@@ -1,15 +1,5 @@
 # helloworld
 
-<!-- vim-markdown-toc GFM -->
-
-* [编写源码](#编写源码)
-* [生成项目管理文件(*.pro)](#生成项目管理文件pro)
-* [生成项目编译文件(Makefile)](#生成项目编译文件makefile)
-* [编译项目](#编译项目)
-* [运行项目](#运行项目)
-
-<!-- vim-markdown-toc -->
-
 ## 编写源码
 
 * 编辑`helloworld.cpp`源码

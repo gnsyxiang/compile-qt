@@ -1,4 +1,4 @@
-# compile-ubuntu
+# 编译5.12.10版本
 
 <!-- vim-markdown-toc GFM -->
 
@@ -219,19 +219,22 @@ URL: [Qt WebEngine](https://doc.qt.io/qt-5/qtwebengine-platform-notes.html#linux
 
         ```shell
         # LLVM
-        $ apt install -y libllvm-12-ocaml-dev libllvm12 llvm-12 llvm-12-dev llvm-12-doc llvm-12-examples llvm-12-runtime
+        $ sudo apt install -y libllvm-12-ocaml-dev libllvm12 llvm-12 llvm-12-dev llvm-12-doc llvm-12-examples llvm-12-runtime
         # Clang and co
-        apt install -y clang-12 clang-tools-12 clang-12-doc libclang-common-12-dev libclang-12-dev libclang1-12 clang-format-12 python-clang-12 clangd-12
+        $ sudo apt install -y clang-12 clang-tools-12 clang-12-doc libclang-common-12-dev libclang-12-dev libclang1-12 clang-format-12 python-clang-12 clangd-12
         # libfuzzer
-        apt install -y libfuzzer-12-dev
+        $ sudo apt install -y libfuzzer-12-dev
         # lldb
-        apt install -y lldb-12
+        $ sudo apt install -y lldb-12
         # lld (linker)
-        apt install -y lld-12
+        $ sudo apt install -y lld-12
         # libc++
-        apt install -y libc++-12-dev libc++abi-12-dev
+        $ sudo apt install -y libc++-12-dev libc++abi-12-dev
         # OpenMP
-        apt install -y libomp-12-dev
+        $ sudo apt install -y libomp-12-dev
+
+        # 整合在一起方便安装
+        $ sudo apt install -y libllvm-12-ocaml-dev libllvm12 llvm-12 llvm-12-dev llvm-12-doc llvm-12-examples llvm-12-runtime clang-12 clang-tools-12 clang-12-doc libclang-common-12-dev libclang-12-dev libclang1-12 clang-format-12 python-clang-12 clangd-12 libfuzzer-12-dev lldb-12 lld-12 libc++-12-dev libc++abi-12-dev libomp-12-dev
         ```
 
     URL: [Installing Clang for QDoc](https://doc.qt.io/qt-5/qdoc-guide-clang.html)
