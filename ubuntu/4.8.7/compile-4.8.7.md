@@ -1,10 +1,32 @@
 # 编译4.8.7版本
 
-## 进行影子编译
+<!-- vim-markdown-toc GFM -->
+
+* [进行影子编译(shadow build)](#进行影子编译shadow-build)
+* [从源码`README`开始](#从源码readme开始)
+* [安装相关依赖](#安装相关依赖)
+* [编译源码](#编译源码)
+
+<!-- vim-markdown-toc -->
+
+## 进行影子编译(shadow build)
 
 建立一个空的目录，用于配置和编译源码，避免污染源码目录
 
+```shell
+~/data/build/qt/4.8.7$ ls
+build.sh
+```
+
 ## 从源码`README`开始
+
+解压源码
+
+```shell
+~/data/opt/qt$ ls
+qt-everywhere-opensource-src-4.8.7.tar.gz
+$ tar xvf qt-everywhere-opensource-src-4.8.7.tar.gz
+```
 
 源码目录下`README`
 
@@ -26,7 +48,7 @@ URL: [编译X11平台](http://qt-project.org/doc/qt-4.8/install-x11.html)
 
 ![install_for_x11](img/install_for_x11.png)
 
-## 安装依赖库
+## 安装相关依赖
 
 * QtGui依赖项(QtGui Dependencies)
 
@@ -100,4 +122,5 @@ $ sudo apt install -y libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-p
 
 ## 编译源码
 
+详见[`build.sh`](build.sh)脚本
 

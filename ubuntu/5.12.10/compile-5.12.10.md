@@ -2,26 +2,35 @@
 
 <!-- vim-markdown-toc GFM -->
 
-* [编译`ubuntu`版本](#编译ubuntu版本)
-  - [编译源码](#编译源码)
-    + [解压源码](#解压源码)
-    + [基础性依赖](#基础性依赖)
-    + [ubuntu中的依赖](#ubuntu中的依赖)
-    + [编译源码](#编译源码-1)
+* [进行影子编译(shadow build)](#进行影子编译shadow-build)
+* [安装相关依赖](#安装相关依赖)
+  - [解压源码](#解压源码)
+  - [基础性依赖](#基础性依赖)
+  - [ubuntu中的依赖](#ubuntu中的依赖)
+* [编译源码](#编译源码)
 
 <!-- vim-markdown-toc -->
 
-## 编译`ubuntu`版本
+## 进行影子编译(shadow build)
 
-### 编译源码
-
-#### 解压源码
+建立一个空的目录，用于配置和编译源码，避免污染源码目录
 
 ```shell
+~/data/build/qt/5.12.10$ ls
+build.sh
+```
+
+## 安装相关依赖
+
+### 解压源码
+
+```shell
+~/data/opt/qt$ ls
+qt-everywhere-src-5.12.10.tar.xz
 $ tar xvf qt-everywhere-src-5.12.10.tar.xz
 ```
 
-#### 基础性依赖
+### 基础性依赖
 
 查看根目录下的`README`文件, 安装红色框中的依赖
 
@@ -37,7 +46,7 @@ $ sudo apt install -y build-essential
 
 ![system_x11_qt5](img/system_x11_qt5.png)
 
-#### ubuntu中的依赖
+### ubuntu中的依赖
 
 URL: [`Qt for X11 Requirements`](https://doc.qt.io/qt-5/linux-requirements.html)
 
@@ -113,6 +122,11 @@ $ sudo apt install -y libatspi2.0-dev
 
     ```shell
     $ sudo apt install -y libglew-dev libsdl2-dev libsdl2-image-dev libglm-dev libfreetype6-dev libglfw3-dev libglfw3
+    ```
+
+    ```shell
+    # 整合在一起方便安装
+    $ sudo apt install -y build-essential libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev libglew-dev libsdl2-dev libsdl2-image-dev libglm-dev libfreetype6-dev libglfw3-dev libglfw3
     ```
 
 * 多媒体相关性(Multimedia Dependencies)
@@ -225,7 +239,7 @@ URL: [Qt WebEngine](https://doc.qt.io/qt-5/qtwebengine-platform-notes.html#linux
     URL: [apt.llvm(apt源)](https://apt.llvm.org/)
 
 
-#### 编译源码
+## 编译源码
 
 URL: [`Get_The_Source`](https://wiki.qt.io/Get_the_Source)
 
