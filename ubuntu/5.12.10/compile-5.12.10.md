@@ -3,7 +3,6 @@
 <!-- vim-markdown-toc GFM -->
 
 * [编译`ubuntu`版本](#编译ubuntu版本)
-  - [下载源码](#下载源码)
   - [编译源码](#编译源码)
     + [解压源码](#解压源码)
     + [基础性依赖](#基础性依赖)
@@ -13,24 +12,6 @@
 <!-- vim-markdown-toc -->
 
 ## 编译`ubuntu`版本
-
-### 下载源码
-
-* [官网地址](https://download.qt.io/archive/qt/) 
-
-下载对应的版本
-
-![qt-all-version](img/qt-all-version.png)
-
-* [这里选择5.12.10](https://download.qt.io/archive/qt/5.12/5.12.10/single/)
-
-![qt-5.12.10](img/qt-5.12.10.png)
-
-点击后面的`Details`，选择清华镜像源进行下载
-
-![qt-5.12.10-tsinghua](img/qt-5.12.10-tsinghua.png)
-
-下载完成后，放到一个指定的目录下，方便后续操作。
 
 ### 编译源码
 
