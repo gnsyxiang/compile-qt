@@ -5,7 +5,14 @@
 * [进行影子编译(shadow build)](#进行影子编译shadow-build)
 * [从源码`README`开始](#从源码readme开始)
 * [安装相关依赖](#安装相关依赖)
-* [编译源码](#编译源码)
+* [编译`ubuntu`版本](#编译ubuntu版本)
+  - [增加`ccache`加快二次编译速度](#增加ccache加快二次编译速度)
+  - [编译脚本](#编译脚本)
+* [交叉编译`himix200`版本](#交叉编译himix200版本)
+  - [增加平台配置项](#增加平台配置项)
+  - [选择编译工具链路径](#选择编译工具链路径)
+  - [增加`ccache`加快二次编译速度](#增加ccache加快二次编译速度-1)
+  - [编译脚本](#编译脚本-1)
 
 <!-- vim-markdown-toc -->
 
@@ -17,7 +24,6 @@
 ~/data/build/qt/4.8.7$ ls
 build.sh
 ```
-
 ## 从源码`README`开始
 
 解压源码
@@ -120,7 +126,63 @@ $ sudo apt install -y gstreamer1.0-pulseaudio
 $ sudo apt install -y libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 ```
 
-## 编译源码
+## 编译`ubuntu`版本
+
+### 增加`ccache`加快二次编译速度
+
+* 安装软件
+
+```shell
+$ sudo apt install -y ccache
+```
+
+首次编译时间:
+
+```shell
+$ time make -j12
+
+real	20m54.295s
+user	83m22.575s
+sys	15m29.169s
+```
+
+第二次编译:
+
+```shell
+$ make clean
+$ time make -j12
+real	4m1.788s
+user	15m51.252s
+sys	    2m7.086s
+```
+
+* 修改源码配置项
+
+修改文件`mkspecs/common/g++-base.conf`
+
+![g++-base-ccache](img/g++-base-ccache.png)
+
+### 编译脚本
+
+详见[`build.sh`](build.sh)脚本
+
+## 交叉编译`himix200`版本
+
+### 增加平台配置项
+
+增加如下目录`mkspecs/qws/linux-arm-himix200-g++`
+
+[内容详见](linux-arm-himix200-g++)
+
+### 选择编译工具链路径
+
+![linux-arm-himix200-g++](img/linux-arm-himix200-g++.png)
+
+### 增加`ccache`加快二次编译速度
+
+![linux-arm-himix200-g++-ccache](img/linux-arm-himix200-g++-ccache.png)
+
+### 编译脚本
 
 详见[`build.sh`](build.sh)脚本
 

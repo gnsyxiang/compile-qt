@@ -3,11 +3,14 @@
 <!-- vim-markdown-toc GFM -->
 
 * [进行影子编译(shadow build)](#进行影子编译shadow-build)
+* [从源码`README`开始](#从源码readme开始)
 * [安装相关依赖](#安装相关依赖)
-  - [解压源码](#解压源码)
-  - [基础性依赖](#基础性依赖)
-  - [ubuntu中的依赖](#ubuntu中的依赖)
-* [编译源码](#编译源码)
+* [编译`ubuntu`版本](#编译ubuntu版本)
+  - [增加`ccache`加快二次编译速度](#增加ccache加快二次编译速度)
+  - [编译脚本](#编译脚本)
+* [交叉编译`himix200`版本](#交叉编译himix200版本)
+  - [增加平台配置项](#增加平台配置项)
+  - [编译脚本](#编译脚本-1)
 
 <!-- vim-markdown-toc -->
 
@@ -20,9 +23,9 @@
 build.sh
 ```
 
-## 安装相关依赖
+## 从源码`README`开始
 
-### 解压源码
+解压源码
 
 ```shell
 ~/data/opt/qt$ ls
@@ -30,11 +33,25 @@ qt-everywhere-src-5.12.10.tar.xz
 $ tar xvf qt-everywhere-src-5.12.10.tar.xz
 ```
 
-### 基础性依赖
+查看根目录下的`README`文件
 
-查看根目录下的`README`文件, 安装红色框中的依赖
+![README](img/README.png)
 
-![system_requirements](img/system_requirements.png)
+URL: [编译各个平台](https://wiki.qt.io/Get_the_Source)
+
+![setting-your-machine](img/setting-your-machine.png)
+
+URL: [安装X11平台的依赖库](https://doc.qt.io/qt-5/linux-requirements.html)
+
+![qt_for_x11_requirements](img/qt_for_x11_requirements.png)
+
+URL: [编译X11平台](https://doc.qt.io/qt-5/linux.html)
+
+![qt_for_x11_building](img/qt_for_x11_building.png)
+
+## 安装相关依赖
+
+* 基本环境
 
 ```shell
 $ sudo apt install -y perl
@@ -42,15 +59,33 @@ $ sudo apt install -y python3.8
 $ sudo apt install -y build-essential
 ```
 
-特定系统的相关依赖见[`Get_The_Source`](https://wiki.qt.io/Get_the_Source)
+* 安装第三方库
 
-![system_x11_qt5](img/system_x11_qt5.png)
+```shell
+$ sudo apt install -y zlib1g-dev
+$ sudo apt install -y libjpeg-dev
+$ sudo apt install -y libpng-dev
+$ sudo apt install -y libfreetype-dev
+$ sudo apt install -y libpcre3-dev
+$ sudo apt install -y libharfbuzz-dev
 
-### ubuntu中的依赖
+# 整合在一起方便安装
+$ sudo apt install -y zlib1g-dev libjpeg-dev libpng-dev libfreetype-dev libpcre3-dev libharfbuzz-dev
+```
 
-URL: [`Qt for X11 Requirements`](https://doc.qt.io/qt-5/linux-requirements.html)
+* 安装工具类库
 
-![system_x11_qt5_for_ubuntu](img/system_x11_qt5_for_ubuntu.png)
+```shell
+$ sudo apt install -y libwayland-dev
+$ sudo apt install -y gperf
+$ sudo apt install -y bison
+$ sudo apt install -y flex
+$ sudo apt install -y libudev-dev
+$ sudo apt install -y libdouble-conversion-dev
+
+# 整合在一起方便安装
+$ sudo apt install -y libwayland-dev gperf bison flex libudev-dev libdouble-conversion-dev
+```
 
 * 平台插件依赖项(Platform Plugin Dependencies)
 
@@ -163,8 +198,6 @@ sudo apt install -y speech-dispatcher
 
 * Qt WebEngine依赖项(Qt WebEngine Dependencies)
 
-![qt_webengine_requirements](img/qt_webengine_requirements.png)
-
 ```shell
 $ sudo apt install -y libdbus-1-dev
 $ sudo apt install -y libfontconfig1-dev
@@ -238,57 +271,38 @@ URL: [Qt WebEngine](https://doc.qt.io/qt-5/qtwebengine-platform-notes.html#linux
 
     URL: [apt.llvm(apt源)](https://apt.llvm.org/)
 
+## 编译`ubuntu`版本
 
-## 编译源码
+### 增加`ccache`加快二次编译速度
 
-URL: [`Get_The_Source`](https://wiki.qt.io/Get_the_Source)
+该选项可以在`configure`中配置
 
-![system_x11_qt5_build](img/system_x11_qt5_build.png)
-
-URL: [`Qt for Linux/X11`](https://doc.qt.io/qt-5/linux.html)
-
-* 开发主机要求(Requirements for Development Host)
+首次编译时间:
 
 ```shell
-$ sudo apt install -y build-essential libgl1-mesa-dev
+$ time make -j12
 ```
 
-![system_x11_qt5_build_src](img/system_x11_qt5_build_src.png)
+第二次编译:
 
-* 编译
+```shell
+$ make clean
+$ time make -j12
+```
 
-    * 安装第三方库
+### 编译脚本
 
-    ```shell
-    $ sudo apt install -y zlib1g-dev
-    $ sudo apt install -y libjpeg-dev
-    $ sudo apt install -y libpng-dev
-    $ sudo apt install -y libfreetype-dev
-    $ sudo apt install -y libpcre3-dev
-    $ sudo apt install -y libharfbuzz-dev
+详见[`build.sh`](build.sh)脚本
 
-    # 整合在一起方便安装
-    $ sudo apt install -y zlib1g-dev libjpeg-dev libpng-dev libfreetype-dev libpcre3-dev libharfbuzz-dev
-    ```
+## 交叉编译`himix200`版本
 
-    * 安装工具类库
+### 增加平台配置项
 
-    ```shell
-    $ sudo apt install -y libwayland-dev
-    $ sudo apt install -y gperf
-    $ sudo apt install -y bison
-    $ sudo apt install -y flex
-    $ sudo apt install -y libudev-dev
-    $ sudo apt install -y libdouble-conversion-dev
+增加如下目录`mkspecs/qws/linux-arm-himix200-g++`
 
-    # 整合在一起方便安装
-    $ sudo apt install -y libwayland-dev gperf bison flex libudev-dev libdouble-conversion-dev
-    ```
+[内容详见](linux-arm-himix200-g++)
 
-    * 无裁剪编译
+### 编译脚本
 
-    ```shell
-    ./configure -release -prefix $INSTALL_PREFIX -opensource -confirm-license -nomake tests -system-zlib -system-libjpeg -system-libpng -system-freetype -system-pcre -system-harfbuzz
-    make
-    ```
+详见[`build.sh`](build.sh)脚本
 
