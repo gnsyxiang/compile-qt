@@ -11,6 +11,9 @@
 * [交叉编译`himix200`版本](#交叉编译himix200版本)
   - [增加平台配置项](#增加平台配置项)
   - [编译脚本](#编译脚本-1)
+* [测试程序](#测试程序)
+  - [helloworld](#helloworld)
+  - [autotools_demo_qt](#autotools_demo_qt)
 
 <!-- vim-markdown-toc -->
 
@@ -298,11 +301,28 @@ $ time make -j12
 
 ### 增加平台配置项
 
-增加如下目录`mkspecs/qws/linux-arm-himix200-g++`
+增加如下目录`qtbase/mkspecs/linux-arm-himix200-g++`
 
 [内容详见](linux-arm-himix200-g++)
 
 ### 编译脚本
 
 详见[`build.sh`](build.sh)脚本
+
+
+## 测试程序
+
+### helloworld
+
+详见[`helloworld`](../helloworld)
+
+### autotools_demo_qt
+
+* 程序
+
+详见[`autotools_demo_qt`](https://github.com/gnsyxiang/autotools_demo_qt)
+
+* 运行脚本
+
+详见[`run.sh`](run.sh)脚本
 
