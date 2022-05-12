@@ -2,13 +2,14 @@
 
 <!-- vim-markdown-toc GFM -->
 
-* [进行影子编译(shadow build)](#进行影子编译shadow-build)
-* [从源码`README`开始](#从源码readme开始)
-* [安装相关依赖](#安装相关依赖)
-* [编译`ubuntu`版本](#编译ubuntu版本)
+- [进行影子编译(shadow build)](#进行影子编译shadow-build)
+- [从源码`README`开始](#从源码readme开始)
+- [安装相关依赖](#安装相关依赖)
+- [编译`ubuntu`版本](#编译ubuntu版本)
+  - [修改源码配置项](#修改源码配置项)
   - [增加`ccache`加快二次编译速度](#增加ccache加快二次编译速度)
   - [编译脚本](#编译脚本)
-* [交叉编译`himix200`版本](#交叉编译himix200版本)
+- [交叉编译`himix200`版本](#交叉编译himix200版本)
   - [增加平台配置项](#增加平台配置项)
   - [选择编译工具链路径](#选择编译工具链路径)
   - [增加`ccache`加快二次编译速度](#增加ccache加快二次编译速度-1)
@@ -21,7 +22,7 @@
 建立一个空的目录，用于配置和编译源码，避免污染源码目录
 
 ```shell
-~/data/build/qt/4.8.7$ ls
+mkdir -p /mnt/data/build/qt/4.8.7/build-ubuntu
 build.sh
 ```
 ## 从源码`README`开始
@@ -29,9 +30,9 @@ build.sh
 解压源码
 
 ```shell
-~/data/opt/qt$ ls
+/mnt/xia/qt/4.8.7$ ls
 qt-everywhere-opensource-src-4.8.7.tar.gz
-$ tar xvf qt-everywhere-opensource-src-4.8.7.tar.gz
+/mnt/xia/qt/4.8.7$ tar xzvf qt-everywhere-opensource-src-4.8.7.tar.gz -C /mnt/data/build/qt/qt-everywhere-opensource-src-4.8.7
 ```
 
 源码目录下`README`
@@ -128,6 +129,21 @@ $ sudo apt install -y libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-p
 
 ## 编译`ubuntu`版本
 
+### 修改源码配置项
+
+报错
+```txt
+qt-everywhere-opensource-src-4.8.7/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h:173:69: error: ‘std::tr1’ has not been declared
+```
+
+解决
+```
+vi mkspecs/common/g++-base.conf
+
+QMAKE_CXX = g++ -std=gnu++98
+```
+
+
 ### 增加`ccache`加快二次编译速度
 
 * 安装软件
@@ -164,13 +180,19 @@ sys	    2m7.086s
 
 ### 编译脚本
 
-详见[`build.sh`](build.sh)脚本
+详见[`build-ubuntu.sh`](build-ubuntu.sh)脚本
+
+
 
 ## 交叉编译`himix200`版本
 
 ### 增加平台配置项
 
 增加如下目录`mkspecs/qws/linux-arm-himix200-g++`
+
+```
+cp -ar linux-arm-himix200-g++ mkspecs/qws/linux-arm-himix200-g++
+```
 
 [内容详见](linux-arm-himix200-g++)
 
@@ -184,5 +206,6 @@ sys	    2m7.086s
 
 ### 编译脚本
 
-详见[`build.sh`](build.sh)脚本
+详见[`build-hisi.sh`](build-hisi.sh)脚本
+
 
