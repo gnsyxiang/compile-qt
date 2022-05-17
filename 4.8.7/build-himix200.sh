@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
 
+# set -x
+
+default_install_path=/mnt/soft/qt/4.8.7
+default_build_path=/mnt/data/build/qt/4.8.7/build-ubuntu
+
 function usage()
 {
-    echo "eg: ./build.sh src-path [/mnt/data/nfs/hisi/himix200] [/mnt/data/build/qt/4.8.7/build-himix200]"
+    echo "eg: ./build.sh src-path [${default_install_path}] [${default_build_path}]"
     exit
 }
 
 if [ $# -lt 1 -o  $# -gt 3 ]; then
     usage
 elif [ $# -eq 1 ]; then
-    install_path=/mnt/data/nfs/hisi/himix200
-    build_path=/mnt/data/build/qt/4.8.7/build-himix200
+    install_path=${default_install_path}
+    build_path=${default_build_path}
 elif [ $# -eq 2 ]; then
     install_path=$2
-    build_path=/mnt/data/build/qt/4.8.7/build-himix200
+    build_path=${default_build_path}
 elif [ $# -eq 3 ]; then
     install_path=$2
     build_path=$3
